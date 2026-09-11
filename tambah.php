@@ -1,129 +1,91 @@
 <?php include "koneksi.php"; ?>
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tambah Data Siswa</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-    :root {
-        --bg: #0f1115;
-        --surface: #171a21;
-        --surface-2: #1e222b;
-        --border: #2a2f3a;
-        --text: #e7e9ee;
-        --text-dim: #8b8f9c;
-        --accent: #00d4a0;
-        --radius: 14px;
-    }
-    * { box-sizing: border-box; }
-    body {
-        font-family: 'Poppins', sans-serif;
-        margin: 0;
-        padding: 40px 20px;
-        background: radial-gradient(circle at top left, #1a1d29, var(--bg) 60%);
-        color: var(--text);
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-    }
-    .wrap { width: 100%; max-width: 480px; }
-    a.back {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        color: var(--text-dim);
-        text-decoration: none;
-        font-size: 14px;
-        margin-bottom: 18px;
-        transition: color 0.15s ease;
-    }
-    a.back:hover { color: var(--accent); }
-    .card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 32px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-    }
-    .card h2 {
-        margin: 0 0 4px;
-        font-size: 22px;
-        font-weight: 700;
-    }
-    .card p.sub {
-        margin: 0 0 24px;
-        color: var(--text-dim);
-        font-size: 13px;
-    }
-    label {
-        font-weight: 600;
-        font-size: 13px;
-        display: block;
-        margin-bottom: 6px;
-        margin-top: 16px;
-        color: var(--text-dim);
-    }
-    label:first-of-type { margin-top: 0; }
-    input {
-        width: 100%;
-        padding: 12px 14px;
-        background: var(--surface-2);
-        color: var(--text);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        font-family: inherit;
-        font-size: 14px;
-        transition: border-color 0.15s ease, background 0.15s ease;
-    }
-    input::placeholder { color: #5a5f6b; }
-    input:focus {
-        outline: none;
-        border-color: var(--accent);
-        background: #232833;
-    }
-    button {
-        width: 100%;
-        margin-top: 26px;
-        padding: 13px;
-        background: linear-gradient(135deg, var(--accent), #55efc4);
-        color: #0b1f18;
-        border: none;
-        border-radius: 10px;
-        font-family: inherit;
-        font-size: 15px;
-        font-weight: 700;
-        cursor: pointer;
-        box-shadow: 0 6px 16px rgba(0, 212, 160, 0.3);
-        transition: transform 0.15s ease;
-    }
-    button:hover { transform: translateY(-2px); }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Data Siswa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #23262f;
+            color: #dfe1e6;
+        }
+
+        .card {
+            background-color: #2a2e38;
+            border: 1px solid #383c47;
+        }
+
+        .form-control {
+            background-color: #303441;
+            border-color: #3a3e4a;
+            color: #dfe1e6;
+        }
+
+        .form-control:focus {
+            background-color: #363b48;
+            border-color: #00d4a0;
+            color: #dfe1e6;
+            box-shadow: 0 0 0 0.25rem rgba(0, 212, 160, 0.15);
+        }
+
+        .form-control::placeholder {
+            color: #6b7080;
+        }
+
+        a.text-muted,
+        p.text-muted {
+            color: #9498a3 !important;
+        }
+    </style>
 </head>
-<body>
-<div class="wrap">
-    <a href="index.php" class="back">&larr; Kembali ke daftar</a>
-    <div class="card">
-        <h2>➕ Tambah Data Siswa</h2>
-        <p class="sub">Isi form di bawah untuk menambahkan siswa baru</p>
-        <form action="proses_tambah.php" method="POST">
-            <label>NIS</label>
-            <input type="text" name="nis" placeholder="Contoh: 2024001" required>
 
-            <label>Nama Lengkap</label>
-            <input type="text" name="nama" placeholder="Contoh: Budi Santoso" required>
+<body data-bs-theme="dark">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6 col-lg-5">
+                <a href="index.php" class="text-decoration-none text-muted d-inline-block mb-3">
+                    <i class="bi bi-arrow-left"></i> Kembali ke daftar
+                </a>
+                <div class="card shadow-sm">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-1"><i class="bi bi-plus-circle"></i> Tambah Data Siswa</h4>
+                        <p class="text-muted small mb-4">Isi form di bawah untuk menambahkan siswa baru</p>
 
-            <label>Kelas</label>
-            <input type="text" name="kelas" placeholder="Contoh: XII" required>
+                        <form action="proses_tambah.php" method="POST">
+                            <div class="mb-3">
+                                <label class="form-label">NIS</label>
+                                <input type="text" name="nis" class="form-control" placeholder="Contoh: 2024001" required>
+                            </div>
 
-            <label>Jurusan</label>
-            <input type="text" name="jurusan" placeholder="Contoh: RPL" required>
+                            <div class="mb-3">
+                                <label class="form-label">Nama Lengkap</label>
+                                <input type="text" name="nama" class="form-control" placeholder="Contoh: Budi Santoso" required>
+                            </div>
 
-            <button type="submit">Simpan Data</button>
-        </form>
+                            <div class="mb-3">
+                                <label class="form-label">Kelas</label>
+                                <input type="text" name="kelas" class="form-control" placeholder="Contoh: XII" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Jurusan</label>
+                                <input type="text" name="jurusan" class="form-control" placeholder="Contoh: RPL" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-success w-100 mt-2">
+                                <i class="bi bi-save"></i> Simpan Data
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
